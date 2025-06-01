@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/766431491916623090/085ed14420614c2a80bb9de057286331/artifacts
+end_time: 1748780721295
+entry_point_name: ''
+experiment_id: '766431491916623090'
+lifecycle_stage: active
+run_id: 085ed14420614c2a80bb9de057286331
+run_name: classy-colt-682
+run_uuid: 085ed14420614c2a80bb9de057286331
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1748780716997
+status: 3
+tags: []
+user_id: lenovo
