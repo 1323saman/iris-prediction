@@ -20,7 +20,7 @@ if st.button("Predict"):
 
     # Call FastAPI backend
     try:
-        response = requests.post("http://localhost:8000/predict", json=input_data)
+        response = requests.post("https://iris-prediction-2.onrender.com/predict", json=input_data)
         response.raise_for_status()  # Raise error for bad status
         prediction = response.json()
         st.success(f"Prediction: {prediction['species']} (class {prediction['prediction']})")
