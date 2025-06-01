@@ -1,40 +1,140 @@
-Iris Flower Prediction App
-This project is a simple machine learning application that predicts the species of an Iris flower based on its features (sepal length, sepal width, petal length, petal width).
+# Iris Flower Prediction - End-to-End ML App
 
-Project Structure
-Backend: FastAPI API that serves the prediction model.
+## Project Overview
 
-Frontend: Streamlit app that takes user input and shows prediction results.
+This project is an end-to-end Machine Learning system that predicts the species of an Iris flower based on its features (sepal length, sepal width, petal length, petal width). The system includes:
 
-Machine Learning: Uses a pre-trained model and scaler saved as pickle files.
+- Model training using the Iris dataset
+- Backend API with FastAPI exposing a `/predict` endpoint
+- Frontend user interface built with Streamlit
+- Experiment tracking with MLflow
+- Deployment on Render (backend) and Streamlit Cloud (frontend)
 
-How to Run
-Run the backend API:
+---
+
+## Project Structure
+
+ml_app_assignment/
+├── ml/
+│ ├── training.ipynb # Jupyter notebook for model training & preprocessing
+│ └── model.pkl # Trained and saved ML model
+├── backend/
+│ └── main.py # FastAPI backend app
+├── frontend/
+│ └── streamlit_app.py # Streamlit frontend app
+├── mlflow_tracking/
+│ └── tracking_setup.md # MLflow setup details and screenshots
+├── Dockerfile (optional) # Dockerfile for containerization (if created)
+├── requirements.txt # Python dependencies
+└── README.md # This file
+
+## Technologies Used
+
+| Component           | Technology         |
+|---------------------|--------------------|
+| Model Training      | Jupyter Notebook (Python, scikit-learn) |
+| Backend API         | FastAPI            |
+| Frontend            | Streamlit          |
+| Experiment Tracking | MLflow             |
+| Deployment          | Render (backend), Streamlit Cloud (frontend) |
+| Optional Container  | Docker             |
+
+---
+
+## Step-by-Step Guide
+
+### 1. Model Training
+
+- Used the **Iris dataset** (4 features, 3 classes).
+- Checked for missing values (none in Iris dataset).
+- Preprocessed data (scaling not needed for tree-based model).
+- Trained a **Random Forest Classifier**.
+- Logged model parameters, metrics (accuracy, precision, recall), and training time to **MLflow**.
+- Saved the trained model as `model.pkl` using `joblib`.
+
+### 2. Backend API (FastAPI)
+
+- Created FastAPI app (`backend/main.py`).
+- Loaded the saved `model.pkl` at startup.
+- Created `/predict` POST endpoint that accepts JSON input with flower features.
+- Endpoint returns predicted Iris class.
+- API documentation automatically available at `/docs`.
+
+### 3. Frontend (Streamlit)
+
+- Built interactive Streamlit app (`frontend/streamlit_app.py`).
+- User inputs sepal length, sepal width, petal length, and petal width.
+- On submission, app sends POST request to FastAPI `/predict` endpoint.
+- Displays prediction result on the UI.
+
+### 4. Experiment Tracking (MLflow)
+
+- Used MLflow to track:
+  - Model parameters (number of trees, etc.)
+  - Accuracy, precision, recall
+  - Training duration
+- Saved MLflow UI screenshots in `mlflow_tracking/tracking_setup.md`.
+
+### 5. Deployment
+
+- **Backend:** Deployed FastAPI app on [Render](https://render.com).
+  - Backend URL: `https://iris-prediction-2.onrender.com`
+- **Frontend:** Deployed Streamlit app on [Streamlit Cloud](https://streamlit.io/cloud).
+- Both services run in containerized environments managed by the platform.
+- (Optional) Dockerfile added for manual containerization (if applicable).
+
+---
+
+## How to Run Locally
+
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/your-username/iris-ml-app.git
+    cd iris-ml-app
+    ```
+
+2. Create and activate virtual environment:
+    ```bash
+    python -m venv venv
+    source venv/bin/activate   # Linux/macOS
+    .\venv\Scripts\activate    # Windows
+    ```
+
+3. Install dependencies:
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+4. Run FastAPI backend:
+    ```bash
+    uvicorn backend.main:app --reload
+    ```
+
+5. Run Streamlit frontend:
+    ```bash
+    streamlit run frontend/streamlit_app.py
+    ```
+
+6. Open browser:
+    - Backend Swagger UI: `http://127.0.0.1:8000/docs`
+    - Streamlit app: `http://localhost:8501`
+
+---
+
+Notes on Dockerization
+This project is deployed on Render and Streamlit Cloud, which manage Docker containers automatically.
+
+No manual Dockerfile is required but can be added for custom container builds.
+
+References
+- FastAPI Documentation
+- Streamlit Documentation
+- MLflow Documentation
+- Render Deployment Guide
+
+Contact
+For any questions, please contact:
+Saman Sajid
+Email: samansajid0158@gmail.com
 
 
-uvicorn ml.main:app --reload
-Run the frontend app:
-
-streamlit run Frontend/app.py
-Open the Streamlit app in your browser and enter Iris flower features to get a prediction.
-
-API Endpoint
-POST /predict: Accepts JSON input with Iris flower features and returns the predicted species.
-
-Deployment
-This project can be deployed on cloud platforms such as Azure App Service or AWS EC2. Optionally, Docker can be used for containerization.
-
-Tools & Technologies
-Python, FastAPI
-
-Streamlit
-
-Scikit-learn (for ML model)
-
-Uvicorn (for running FastAPI)
-
-Requests (for API calls)
-
-Make sure the backend is running before starting the frontend.
-
-Update the API URL in the frontend code if deploying on a remote server.
