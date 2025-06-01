@@ -88,32 +88,32 @@ ml_app_assignment/
 ## How to Run Locally
 
 1. Clone the repository:
-    ```bash
-    git clone https://github.com/your-username/iris-ml-app.git
+    
+    git clone https://github.com/1323saman/iris-prediction.git
     cd iris-ml-app
-    ```
+    
 
 2. Create and activate virtual environment:
-    ```bash
-    python -m venv venv
-    source venv/bin/activate   # Linux/macOS
-    .\venv\Scripts\activate    # Windows
-    ```
+   
+    py -m venv ML
+   
+    .\ML\Scripts\activate   
+  
 
 3. Install dependencies:
-    ```bash
-    pip install -r requirements.txt
-    ```
+    
+    py -m pip install -r requirements.txt
+  
 
 4. Run FastAPI backend:
-    ```bash
-    uvicorn backend.main:app --reload
-    ```
+   
+    uvicorn Backend.main:app --reload
+  
 
 5. Run Streamlit frontend:
-    ```bash
-    streamlit run frontend/streamlit_app.py
-    ```
+    
+    streamlit run Frontend/streamlit_app.py
+    
 
 6. Open browser:
     - Backend Swagger UI: `http://127.0.0.1:8000/docs`
