@@ -73,7 +73,7 @@ ml_app_assignment/
   - Model parameters (number of trees, etc.)
   - Accuracy, precision, recall
   - Training duration
-- Saved MLflow UI screenshots in `mlflow_tracking/tracking_setup.md`.
+
 
 ### 5. Deployment
 
@@ -90,7 +90,7 @@ ml_app_assignment/
 1. Clone the repository:
     
     git clone https://github.com/1323saman/iris-prediction.git
-    cd iris-ml-app
+  
     
 
 2. Create and activate virtual environment:
